@@ -1,25 +1,69 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="BrowserChat" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="https://www.twilio.com/blog/2015/12/designing-chat-applications-for-ios-using-swift.html" textAlignment="natural" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="IIr-cL-Z4d">
+                                <rect key="frame" x="0.0" y="20" width="341" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="pIf-tS-lh5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="go"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="tzh-wN-rJh"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sQw-rR-a9P">
+                                <rect key="frame" x="345" y="20" width="30" height="30"/>
+                                <state key="normal" title="Go"/>
+                                <connections>
+                                    <action selector="goURL:" destination="BYZ-38-t0r" eventType="touchUpInside" id="auQ-II-mN3"/>
+                                </connections>
+                            </button>
+                            <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8R9-S9-O3A">
+                                <rect key="frame" x="-4" y="50" width="383" height="617"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES"/>
+                            </webView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="IIr-cL-Z4d" secondAttribute="trailing" constant="18" id="3Lq-0n-aLK"/>
+                            <constraint firstItem="8R9-S9-O3A" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="4OT-AN-Akx"/>
+                            <constraint firstItem="IIr-cL-Z4d" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="6xf-3f-afn"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="sQw-rR-a9P" secondAttribute="trailing" constant="-16" id="Gik-0j-rIv"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="8R9-S9-O3A" secondAttribute="trailing" constant="-20" id="K6B-Hr-t2D"/>
+                            <constraint firstItem="8R9-S9-O3A" firstAttribute="top" secondItem="sQw-rR-a9P" secondAttribute="bottom" id="MrJ-sz-myj"/>
+                            <constraint firstItem="IIr-cL-Z4d" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="Sgz-y3-w9L"/>
+                            <constraint firstItem="sQw-rR-a9P" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="TZs-Zv-RZg"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="8R9-S9-O3A" secondAttribute="bottom" id="x94-fO-FJL"/>
+                        </constraints>
                     </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="urlBar" destination="IIr-cL-Z4d" id="u1r-vl-S3P"/>
+                        <outlet property="webBrowser" destination="8R9-S9-O3A" id="GLx-ax-t2Z"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="258.5" y="369.5"/>
         </scene>
     </scenes>
 </document>
